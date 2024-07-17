@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:my_project/common/styles/spacing_styles.dart';
 import 'package:my_project/common/widgets/login_signup/form_divider.dart';
 import 'package:my_project/common/widgets/login_signup/social_buttons.dart';
+import 'package:my_project/features/authentication/screens/signup/signup.dart';
 import 'package:my_project/utils/constants/image_strings.dart';
 import 'package:my_project/utils/constants/sizes.dart';
 import 'package:my_project/utils/constants/text_strings.dart';
-import 'package:my_project/utils/helpers/helper_function.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final dark = MyHelperFunction.isDarkMode(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -100,9 +100,10 @@ class LoginScreen extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         child: OutlinedButton(
-                            onPressed: () {},
+                            onPressed: () => Get.to(() => const SignupScreen()),
                             child: const Text(MyTexts.createAccount)),
                       ),
+
                       const SizedBox(height: MySizes.spaceBetweenSections),
                     ],
                   ),
@@ -110,7 +111,9 @@ class LoginScreen extends StatelessWidget {
               ),
 
               /// Divider
-              const FormDivider(),
+              FormDivider(
+                dividerText: MyTexts.orSignInWith.capitalize!,
+              ),
 
               const SizedBox(height: MySizes.spaceBetweenSections),
 
